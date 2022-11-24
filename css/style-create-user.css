@@ -134,17 +134,19 @@ a:hover {
 #msgError {
     text-align: center;
     color: #ff0000;
-    background-color: #ffbbbb;
     padding: 10px;
-    border-radius: 4px;
-    display: none;
+}
+
+#link_msgError {
+    color: #ff0000;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all .3s ease-out;
 }
 
 #msgSuccess {
     text-align: center;
-    color: #00bb00;
-    background-color: #bbffbe;
+    font-weight: bold;
+    color: #299c5e;
     padding: 10px;
-    border-radius: 4px;
-    display: none;
 }

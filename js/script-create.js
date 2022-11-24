@@ -1,4 +1,6 @@
 // MINHAS VARIÁVEIS
+let btn_cad = document.querySelector('#btn_cad') 
+
 let btn = document.querySelector('#verSenha')
 let btnConfirm = document.querySelector('#verConfirmSenha')
 
@@ -100,19 +102,3 @@ btnConfirm.addEventListener('click', ()=>{
         inputConfirmSenha.setAttribute('type', 'password')
     }
 })
-
-// VALIDANDO SE CAMPOS DO FORMULÁRIO NÃO ESTÃO EM BRANCO PARA ENVIO DOS DADOS DE CADASTRO
-function cadastrar(){
-    if (validNome && validEmail && validSenha && validConfirmSenha){
-        msgSuccess.setAttribute('style', 'display: block')
-        msgSuccess.innerHTML = '<strong>Cadastrado realizado!</strong>'
-        msgError.innerHTML = ''
-        msgError.setAttribute('style', 'display: none')
-
-    } else {
-        msgError.setAttribute('style', 'display: block')
-        msgError.innerHTML = '<strong>E-mail informado já existe!</strong>'
-        msgSuccess.innerHTML = ''
-        msgSuccess.setAttribute('style', 'display: none')
-    }
-}

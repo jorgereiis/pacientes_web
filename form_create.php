@@ -1,37 +1,5 @@
 <?php
-    // IMPORTANDO A CONEXÃO COM O BD
-    include("connection.php");
     session_start();
-
-    $_SESSION["email_existe"] = "";
-    $_SESSION["cadastro_realizado"] = "";
-
-    // INICIANDO SEÇÃO E VERIFICANDO CREDENCIAIS DE ACESSO
-    if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        $nome = $mysqli -> real_escape_string($_POST["nome"]);
-        $email = $mysqli -> real_escape_string($_POST["email"]);
-        $senha = $mysqli -> real_escape_string($_POST["passwd"]);
-        
-        // DEFININDO QUERY SQL E REALIZANDO CONSULTA NO BANCO DE DADOS.
-        $sql_consult = "SELECT * FROM usuarios WHERE email = '$email'";
-        $sql_query_consult = $mysqli -> query($sql_consult) or die("Falha na consulta SQL: " . $mysqli->error);
-        $quantidade = $sql_query_consult -> num_rows;
-
-        if ($quantidade >= 1){
-            $_SESSION["email_existe"] = true;
-
-        }
-
-        // CADASTRO
-        $sql_create = "INSERT INTO usuarios(`nome`, `email`, `senha`) VALUES ('$nome', '$email','$senha')";
-
-        if ($mysqli -> query($sql_create) === TRUE){
-            $_SESSION["cadastro_realizado"] = true;
-            
-        }
-    }
-
-    $mysqli -> close();
 ?>
 
 <!DOCTYPE html>
@@ -49,13 +17,14 @@
         <div class="card">
             <h1>Criar Conta</h1>
 
-            <form action="create-account.php" method="POST">
-                <?php if($_SESSION["email_existe"]):?>
-                    <div id="msgError"></div>
-                <?php endif ?>
+            <form action="create_validation.php" method="POST">
+                <?php if($_SESSION["email_existe"]): ?>
+                    <div id="msgError">E-mail informado já cadastrado. <br> Faça login <a id="link_msgError" href="index.php">aqui!</a></div>
+                <?php endif; $_SESSION["email_existe"]=''; ?>
+
                 <?php if($_SESSION["cadastro_realizado"]): ?>
-                    <div id="msgSuccess"></div>
-                <?php endif ?>
+                    <div id="msgSuccess">Cadastro realizado com sucesso!</div>
+                <?php endif; $_SESSION["cadastro_realizado"]=''; ?>
                 
                 <div class="label-float">
                     <input type="text" id="nome" name="nome" placeholder="" minlength="8" required>
@@ -80,7 +49,7 @@
                 </div>
 
                 <div class="justify-center">
-                    <button onclick="cadastrar()" >Cadastrar</button>
+                    <button id="btn_cad">Cadastrar</button>
                 </div>
             </form>
 

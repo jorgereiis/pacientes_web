@@ -63,7 +63,7 @@
             <div class="card">
                 <h1>Gestão de Pacientes</h1>
 
-                <p style="color: red; font-size: 10px"><?=$msg_erro?></p>
+                <p id="msgError"><?=$msg_erro?></p>
 
                 <div class="label-float">
                     <input type="email" id="user" name="email" placeholder="" required>
@@ -86,7 +86,7 @@
 
                 <p>
                     Não é cadastrado?
-                    <a href="create-account.php">Cadastre-se</a>
+                    <a href="form_create.php">Cadastre-se</a>
                 </p>
             </div>
         </div>

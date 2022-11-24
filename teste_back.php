@@ -1,6 +1,9 @@
 <?php
     // IMPORTANDO A CONEXÃO COM O BD
     include("connection.php");
+    session_start();
+    $_SESSION['cad_fail'] = 'bola';
+    $_SESSION['cad_success'] = 'nada';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $email = $mysqli -> real_escape_string($_POST["email"]);
@@ -12,34 +15,15 @@
         $quantidade = $sql_query_consult -> num_rows;
 
         if ($quantidade >= 1){
-            echo "Usuário já existe!";
-            echo "<br> Linhas: " . $quantidade;
+            $_SESSION['cad_fail'] = 'ok';
+            header("Location: teste_cad.php");
 
         } else {
             // CADASTRO
             $sql_create = "INSERT INTO usuarios(`nome`, `email`, `senha`) VALUES ('Usuário teste', '$email','$senha')";
             $sql_query_create = $mysqli -> query($sql_create) or die("Falha no cadastro SQL: " . $mysqli->error);
-            echo "Cadastro realizado!";
-            echo "<br> Linhas: " . $quantidade;
+            $_SESSION['cad_success'] = 'ok';
+            header("Location: teste_cad.php");
         }
     }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste</title>
-</head>
-<body>
-    <form action="teste.php" method="post">
-        Email:
-        <input type="text" name="email" id="email">
-        Senha:
-        <input type="password" name="senha" id="senha">
-        <button>Enviar</button>
-    </form>
-</body>
-</html>
