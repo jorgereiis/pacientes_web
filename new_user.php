@@ -8,16 +8,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar novo usuário</title>
     <link rel="stylesheet" href="./css/style-create-user.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <title>Criar novo usuário</title>
 </head>
 <body>
     <div class="container">
         <div class="card">
             <h1>Criar Conta</h1>
 
-            <form action="create_validation.php" method="POST">
+            <form action="save_user.php" method="POST">
                 <?php if($_SESSION["email_existe"]): ?>
                     <div id="msgError">E-mail informado já cadastrado. <br> Faça login <a id="link_msgError" href="index.php">aqui!</a></div>
                 <?php endif; $_SESSION["email_existe"]=''; ?>

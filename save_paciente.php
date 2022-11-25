@@ -2,11 +2,6 @@
     // IMPORTANDO A CONEXÃO COM O BD
     include("connection.php");
 
-    session_start();
-
-    $_SESSION['deubom'] = '';
-    $_SESSION['deuruim'] = '';
-
     // INICIANDO SEÇÃO E VERIFICANDO CREDENCIAIS DE ACESSO
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $nome = $mysqli -> real_escape_string($_POST["nome_paciente"]);
@@ -21,12 +16,8 @@
         $sql_create = "INSERT INTO pacientes(`nome`, `idade`, `peso`, `altura`, `imc`) VALUES ('$nome', $idade, $peso, $altura, $imc)";
 
         if ($mysqli -> query($sql_create) === TRUE){
-            $_SESSION['deubom'] = 'ok';
-            header("Location: teste_cad.php");
+            header("Location: painel.php");
             
-        } else {
-            $_SESSION['deuruim'] = 'bad';
-            header("Location: teste_cad.php");
         }
     }
     

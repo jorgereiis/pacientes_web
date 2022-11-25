@@ -13,18 +13,22 @@
 <body>
     <form action="teste_back.php" method="post">
 
-        <?php if($_SESSION['cad_success'] == 'ok'){ ?>
+        <?php if($_SESSION['deubom'] == 'ok'){ ?>
         <p style="color: green; font-size: 10px">SUCESSO</p>
-        <?php } else { echo $_SESSION['cad_success'];}; ?>
+        <?php } ?>
 
-        <?php if($_SESSION['cad_fail'] == 'ok'){ ?>
+        <?php if($_SESSION['deuruim'] == 'ok'){ ?>
         <p style="color: red; font-size: 10px">FALHOU</p>
         <?php }; ?>
 
-        Email:
-        <input type="text" name="email" id="email">
-        Senha:
-        <input type="password" name="senha" id="senha">
+        Nome
+        <input type="text" name="nome_paciente" step="0.01"> <br>
+        Idade
+        <input type="number" name="idade_paciente" step="0.01"> <br>
+        Peso
+        <input type="number" name="peso_paciente" step="0.01"> <br>
+        Altura
+        <input type="number" name="alt_paciente" step="0.01"> <br>
         <button>Enviar</button>
     </form>
 </body>

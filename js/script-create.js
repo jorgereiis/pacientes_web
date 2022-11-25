@@ -1,5 +1,5 @@
 // MINHAS VARIÁVEIS
-let btn_cad = document.querySelector('#btn_cad') 
+let btn_cad = document.querySelector('#btn_cad')
 
 let btn = document.querySelector('#verSenha')
 let btnConfirm = document.querySelector('#verConfirmSenha')
