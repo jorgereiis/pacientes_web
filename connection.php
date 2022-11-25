@@ -1,6 +1,6 @@
 <?php
 $username = 'root';
-$passwd = '';
+$passwd = '1234';
 $database = 'projeto_pacientes';
 $host = '127.0.0.1';
 

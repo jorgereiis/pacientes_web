@@ -20,7 +20,7 @@
         // CASO EXISTA USUARIO COM O EMAIL PASSADO NO FORMULÁRIO, DEFINE TRUE NA VARIAVEL DE SESSÃO E SAI DA CONEXÃO COM O BANCO DE DADOS.
         if ($quantidade >= 1){
             $_SESSION["email_existe"] = true;
-            header("Location: form_create.php");
+            header("Location: new_user.php");
             exit;
         }
 
@@ -29,7 +29,7 @@
 
         if ($mysqli -> query($sql_create) === TRUE){
             $_SESSION["cadastro_realizado"] = true;
-            header("Location: form_create.php");
+            header("Location: new_user.php");
             
         }
     }
