@@ -1,7 +1,11 @@
 <?php
     include("protect.php");
+    include("connection.php");
 
+    $sql_code = "SELECT * FROM pacientes";
+    $result_query = $mysqli -> query($sql_code) or die("Falha na tentativa de consulta ao Banco de Dados.");
 
+    $qtd_linhas = $result_query -> num_rows;
 ?>
 
 <!DOCTYPE html>
@@ -19,10 +23,13 @@
         <a href="logout.php" class="logout cor">X</a>
     </header>
     <main>
-        <button type="button" class="button green mobile" id="cadastrarCliente">Cadastrar Paciente</button>
+        <button type="button" class="button green mobile cadastrar" id="cadastrarCliente">Cadastrar Paciente</button>
+        <button type="button" class="button red apagarTudo" onclick="apagarTudo()">Excluir tudo</button>
+        <br><br>
         <table class="records">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Nome</th>
                     <th>Idade</th>
                     <th>Peso</th>
@@ -32,17 +39,32 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Jorge Reis</td>
-                    <td>32 anos</td>
-                    <td>81.10 kg</td>
-                    <td>1.74 cm</td>
-                    <td>26.30</td>
-                    <td>
-                        <button type="button" class="button green">editar</button>
-                        <button type="button" class="button red">excluir</button>
-                    </td>
-                </tr>
+                <?php
+                    if ($qtd_linhas > 0){
+                        $contador=1;
+                        while($data = mysqli_fetch_assoc($result_query)){
+                            echo "<tr>";
+                            echo "<td>".$contador."</td>";
+                            echo "<td>".$data['nome']."</td>";
+                            echo "<td>".$data['idade']." anos</td>";
+                            echo "<td>".$data['peso']." kg</td>";
+                            echo "<td>".$data['altura']." cm</td>";
+                            echo "<td>".$data['imc']."</td>";
+                ?>
+                        <td>
+                            <button type="button" class="button green">editar</button>
+                            <button type="button" class="button red">excluir</button>
+                        </td>
+                <?php       echo "<tr>";
+                            $contador++;
+                        }
+
+                    } else {
+                        echo "<tr><td colspan='7' align='center' id='tdzero'>Não há registros!</td></tr>";
+                    }
+
+                    $mysqli -> close();
+                ?>
             </tbody>
         </table>
         <div class="modal" id="modal">

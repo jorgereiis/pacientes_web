@@ -14,3 +14,10 @@ document.getElementById('modalClose')
 
 document.getElementById('modalClose2')
     .addEventListener('click', closeModal)
+
+document.getElementById('apagarTudo')
+    .addEventListener('click', window.location.href = 'http://localhost/pacientes/del-pacientes.php')
+
+function apagarTudo(){
+    window.location.href = "http://localhost/pacientes/del-pacientes.php";
+}

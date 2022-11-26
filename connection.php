@@ -1,4 +1,5 @@
 <?php
+
 $username = 'root';
 $passwd = '1234';
 $database = 'projeto_pacientes';

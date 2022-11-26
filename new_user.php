@@ -1,5 +1,6 @@
 <?php
     session_start();
+    
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +21,11 @@
             <form action="save_user.php" method="POST">
                 <?php if($_SESSION["email_existe"]): ?>
                     <div id="msgError">E-mail informado já cadastrado. <br> Faça login <a id="link_msgError" href="index.php">aqui!</a></div>
-                <?php endif; $_SESSION["email_existe"]=''; ?>
+                <?php endif; $_SESSION["email_existe"] = false; ?>
 
                 <?php if($_SESSION["cadastro_realizado"]): ?>
                     <div id="msgSuccess">Cadastro realizado com sucesso!</div>
-                <?php endif; $_SESSION["cadastro_realizado"]=''; ?>
+                <?php endif; $_SESSION["cadastro_realizado"] = false; ?>
                 
                 <div class="label-float">
                     <input type="text" id="nome" name="nome" placeholder="" minlength="8" required>

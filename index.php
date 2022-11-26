@@ -1,6 +1,11 @@
 <?php
     // IMPORTANDO A CONEXÃO COM O BD
     include("connection.php");
+    session_start();
+
+    $_SESSION["email_existe"] = false;
+    $_SESSION["cadastro_realizado"] = false;
+
 
     // INICIANDO SEÇÃO E VERIFICANDO CREDENCIAIS DE ACESSO
     $msg_erro = "";

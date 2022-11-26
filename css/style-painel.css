@@ -85,7 +85,6 @@ footer {
 }
 
 /* ESTILOS DOS BOTÕES DENTRO DA TAG MAIN */
-
 .button {
     border-style: none;
     height: 40px;
@@ -95,6 +94,15 @@ footer {
     font-size: 1rem;
     cursor: pointer;
     transition: box-shadow .6s ease;
+}
+
+.button.apagarTudo {
+    position: absolute;
+    left: 320px;
+}
+
+.button.cadastrar {
+    position: absolute;
 }
 
 .button.blue {
@@ -114,6 +122,10 @@ footer {
 }
 
 /* ESTILOS DA TABELA DO PAINEL DENTRO DA TAG MAIN*/
+#tdzero {
+    font-size: 25px;
+}
+
 .records {
     width: 100%;
     user-select: none;
