@@ -122,6 +122,14 @@ footer {
 }
 
 /* ESTILOS DA TABELA DO PAINEL DENTRO DA TAG MAIN*/
+.hand.green {
+    color: green;
+}
+
+.hand.red {
+    color: red;
+}
+
 #tdzero {
     font-size: 25px;
 }

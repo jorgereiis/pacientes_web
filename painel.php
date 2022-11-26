@@ -14,6 +14,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/style-painel.css">
     <title>Painel do sistema</title>
 </head>
@@ -28,13 +29,14 @@
         <br><br>
         <table class="records">
             <thead>
-                <tr>
+                <tr align='center'>
                     <th>#</th>
                     <th>Nome</th>
                     <th>Idade</th>
                     <th>Peso</th>
                     <th>Altura</th>
                     <th>IMC</th>
+                    <th>Situação</th>
                     <th>AÇÃO</th>
                 </tr>
             </thead>
@@ -43,13 +45,19 @@
                     if ($qtd_linhas > 0){
                         $contador=1;
                         while($data = mysqli_fetch_assoc($result_query)){
-                            echo "<tr>";
+                            echo "<tr id='linha'>";
                             echo "<td>".$contador."</td>";
                             echo "<td>".$data['nome']."</td>";
                             echo "<td>".$data['idade']." anos</td>";
                             echo "<td>".$data['peso']." kg</td>";
                             echo "<td>".$data['altura']." cm</td>";
-                            echo "<td>".$data['imc']."</td>";
+                            echo "<td id='imc'>".$data['imc']. "</td>";
+                            if ($data['imc'] < 25){
+                                echo "<td class='hand green' align='center'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i></td>";
+                            } else {
+
+                                echo "<td class='hand red' align='center'><i class='fa fa-thumbs-o-down' aria-hidden='true'></i></td>";
+                            }
                 ?>
                         <td>
                             <button type="button" class="button green">editar</button>
@@ -60,7 +68,7 @@
                         }
 
                     } else {
-                        echo "<tr><td colspan='7' align='center' id='tdzero'>Não há registros!</td></tr>";
+                        echo "<tr><td colspan='8' align='center' id='tdzero'>Não há registros!</td></tr>";
                     }
 
                     $mysqli -> close();

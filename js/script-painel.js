@@ -21,3 +21,5 @@ document.getElementById('apagarTudo')
 function apagarTudo(){
     window.location.href = "http://localhost/pacientes/del-pacientes.php";
 }
+
+
