@@ -26,7 +26,7 @@
 
                 // DEFININDO QUERY SQL E REALIZANDO CONSULTA NO BANCO DE DADOS.
                 $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
-                $sql_query = $mysqli -> query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+                $sql_query = $mysqli -> query($sql_code) or die("Falha na execução do código SQL. Verifique a consulta de login!");
 
                 // VERIFICANDO A QUANTIDADE DE LINHAS RETORNADA NA CONSULTA DO BANCO, SE FOR IGUAL A 1, REDIRECIONA PARA A PÁGINA DO PAINEL
                 $quantidade = $sql_query->num_rows;

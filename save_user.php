@@ -14,7 +14,7 @@
         
         // DEFININDO QUERY SQL E REALIZANDO CONSULTA NO BANCO DE DADOS.
         $sql_consult = "SELECT * FROM usuarios WHERE email = '$email'";
-        $sql_query_consult = $mysqli -> query($sql_consult) or die("Falha na consulta SQL: " . $mysqli->error);
+        $sql_query_consult = $mysqli -> query($sql_consult) or die("Falha na consulta ao Banco de Dados.");
         $quantidade = $sql_query_consult -> num_rows;
 
         // CASO EXISTA USUARIO COM O EMAIL PASSADO NO FORMULÁRIO, DEFINE TRUE NA VARIAVEL DE SESSÃO E SAI DA CONEXÃO COM O BANCO DE DADOS.
